@@ -37,9 +37,9 @@ endif()
 cmessage(STATUS "Install prefix: ${CMAKE_INSTALL_PREFIX}")
 
 if(CMAKE_BUILD_TYPE STREQUAL "")
-  set(CMAKE_BUILD_TYPE DEBUG)
+	set(CMAKE_BUILD_TYPE RELEASE)
 elseif(NOT DEFINED CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE DEBUG)
+	set(CMAKE_BUILD_TYPE RELEASE)
 endif()
 
 ################################################################################
