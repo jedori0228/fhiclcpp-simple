@@ -11,6 +11,7 @@ install(FILES
   Base.hxx
   CompositeTypesSharedImpl.hxx
   exception.hxx
+  fhicl_doc.hxx
   ParameterSet.hxx
   Sequence.hxx
   traits.hxx

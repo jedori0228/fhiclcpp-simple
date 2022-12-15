@@ -4,6 +4,7 @@
 #include "types/Atom.hxx"
 #include "types/Base.hxx"
 #include "types/exception.hxx"
+#include "types/fhicl_doc.hxx"
 
 #include "string_parsers/from_string.hxx"
 #include "string_parsers/md5.hxx"
@@ -221,6 +222,20 @@ public:
     history = std::move(other.history);
     idCache = other.idCache;
     return *this;
+  }
+
+  ParameterSet make(std::string const &filename){
+    ParameterSet prolog;
+    ParameterSet working_doc;
+
+    fhicl::fhicl_doc doc = fhicl::read_doc(filename);
+    doc.resolve_includes();
+
+    return parse_fhicl_document(doc);
+  }
+
+  void make(std::string const &filename, ParameterSet& pset){  
+    pset = make_ParameterSet(filename);
   }
 
   bool is_empty() const { return !internal_rep.size(); }

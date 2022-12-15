@@ -11,7 +11,6 @@ if(DOTEST)
 endif()
 
 install(FILES
-  fhicl_doc.hxx
   exception.hxx
   make_ParameterSet.h
   ParameterSet.h

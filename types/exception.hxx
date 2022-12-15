@@ -43,7 +43,23 @@ NEW_EXCEPT(cant_insert);
 NEW_EXCEPT(wrong_fhicl_category);
 NEW_EXCEPT(bizare_error);
 
+NEW_EXCEPT(file_does_not_exist);
+NEW_EXCEPT(include_loop);
+NEW_EXCEPT(internal_error);
+NEW_EXCEPT(malformed_document);
+
 #undef NEW_EXCEPT
+
+struct unexpected_newline : public malformed_document {
+  unexpected_newline() : malformed_document() {}
+  unexpected_newline(unexpected_newline const &other)
+      : malformed_document(other) {}
+  template <typename T> unexpected_newline &operator<<(T const &obj) {
+    msgstrm << obj;
+    msg = msgstrm.str();
+    return (*this);
+  }
+};
 
 } // namespace fhicl
 

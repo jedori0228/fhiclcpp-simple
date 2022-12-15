@@ -3,7 +3,7 @@
 
 #include "fhiclcpp/ParameterSet.h"
 
-#include "fhiclcpp/fhicl_doc.hxx"
+#include "types/fhicl_doc.hxx"
 
 #include <cstdio>
 
